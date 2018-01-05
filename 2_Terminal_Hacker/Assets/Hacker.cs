@@ -9,6 +9,7 @@ public class Hacker : MonoBehaviour
     int level;
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
+    string password;
 
     // Use this for initialization
     void Start()
@@ -42,6 +43,10 @@ public class Hacker : MonoBehaviour
         else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(userInput);
+        }
+        else if (currentScreen == Screen.Password)
+        {
+            CorrectPassword(userInput);
         }
 
     }
@@ -77,5 +82,29 @@ public class Hacker : MonoBehaviour
         currentScreen = Screen.Password;
         Terminal.WriteLine("You have chosen level " + level);
         Terminal.WriteLine("Please enter your password.");
+        if (level == 1)
+        {
+            password = "Jail";
+        }
+        else if (level == 2)
+        {
+            password = "Agent";
+        }
+    }
+
+    private void CorrectPassword(string userInput)
+    {
+        if (level == 1 && userInput == password)
+        {
+            Terminal.WriteLine("Well Done!");
+        }
+        else if (level == 2 && userInput == password)
+        {
+            Terminal.WriteLine("Well Done!");
+        }
+        else
+        {
+            Terminal.WriteLine("try again!");
+        }
     }
 }
