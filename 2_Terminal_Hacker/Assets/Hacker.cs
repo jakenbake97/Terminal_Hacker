@@ -3,6 +3,7 @@
 public class Hacker : MonoBehaviour
 {
     // Game configuration data
+    const string menuHint = "Type 'menu' to return to menu";
     string[] level1Passwords = { "jail", "booked", "keys", "police", "pistol" };
     string[] level2Passwords = { "agent", "federal", "wanted", "bureau", "investigation" };
     string[] level3Passwords = { "department", "defense", "general", "terrorist", "military" };
@@ -18,11 +19,11 @@ public class Hacker : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GetPlayerName();
+        AskPlayerName();
     }
 
 
-    void GetPlayerName()
+    void AskPlayerName()
     {
         Terminal.ClearScreen();
         currentScreen = Screen.Intro;
@@ -48,7 +49,7 @@ public class Hacker : MonoBehaviour
         {
             Terminal.ClearScreen();
             currentScreen = Screen.MainMenu;
-            Terminal.WriteLine("Welcome " + playerName + " to the Hacker-tron 2000");
+            Terminal.WriteLine("Welcome " + playerName + " to the Hacker-tron");
             Terminal.WriteLine(" ");
             Terminal.WriteLine("Please select the facility in which you wish to hack.");
             Terminal.WriteLine(" ");
@@ -104,9 +105,14 @@ public class Hacker : MonoBehaviour
         Terminal.ClearScreen();
         SetRandomPassword();
         Terminal.WriteLine("Please enter the password to access " + levelName);
-        Terminal.WriteLine("hint: " + password.Anagram());
+        PasswordHint();
+        Terminal.WriteLine(menuHint);
         Terminal.WriteLine("");
 
+    }
+    void PasswordHint()
+    {
+        Terminal.WriteLine("hint: " + password.Anagram());
     }
 
     void SetRandomPassword()
@@ -141,7 +147,7 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Wrong password, try again!");
-            Terminal.WriteLine("hint: " + password.Anagram());
+            PasswordHint();
         }
     }
 
@@ -157,7 +163,6 @@ public class Hacker : MonoBehaviour
         switch (level)
         {
             case 1:
-                Terminal.WriteLine("You're in!");
                 Terminal.WriteLine("Here are the local criminal records");
                 Terminal.WriteLine(@"
  
@@ -168,9 +173,9 @@ public class Hacker : MonoBehaviour
 /________/                
 "
                 );
+                Terminal.WriteLine(menuHint);
                 break;
             case 2:
-                Terminal.WriteLine("You're in!");
                 Terminal.WriteLine("Here is the FBI's Most Wanted list");
                 Terminal.WriteLine(@"
       _________  
@@ -182,9 +187,9 @@ public class Hacker : MonoBehaviour
 (________(/                
 "
                 );
+                Terminal.WriteLine(menuHint);
                 break;
             case 3:
-                Terminal.WriteLine("You're in!");
                 Terminal.WriteLine("Here is the Terrorist Manifesto");
                 Terminal.WriteLine(@"
        ____________
@@ -196,7 +201,7 @@ public class Hacker : MonoBehaviour
 ((__________(/               
 "
                 );
-
+                Terminal.WriteLine(menuHint);
                 break;
             default:
                 Debug.LogError("Level is invalid");
