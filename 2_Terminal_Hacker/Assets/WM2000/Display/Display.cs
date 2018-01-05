@@ -33,4 +33,4 @@ public class Display : MonoBehaviour
             screenText.text = connectedToTerminal.GetDisplayBuffer(charactersWide, charactersHigh);
         }
     }
-} 
+}

@@ -49,8 +49,7 @@ public class Hacker : MonoBehaviour
         {
             Terminal.ClearScreen();
             currentScreen = Screen.MainMenu;
-            Terminal.WriteLine("Welcome " + playerName + " to the Hacker-tron");
-            Terminal.WriteLine(" ");
+            Terminal.WriteLine("Welcome to the Hacker-tron, " + playerName + ".");
             Terminal.WriteLine("Please select the facility in which you wish to hack.");
             Terminal.WriteLine(" ");
             Terminal.WriteLine("1. Local Police Station");
