@@ -68,6 +68,11 @@ public class Hacker : MonoBehaviour
         {
             ShowMainMenu(playerName);
         }
+        else if (userInput == "quit" || userInput == "exit" || userInput == "close")
+        {
+            Terminal.WriteLine("Close the tab in browser");
+            Application.Quit();
+        }
         else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(userInput);
